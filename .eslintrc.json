@@ -11,6 +11,7 @@
     "no-plusplus": "off",
     "no-param-reassign": "off",
     "no-unused-vars": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "linebreak-style": "windows"
   }
 }

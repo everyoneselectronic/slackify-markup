@@ -1,21 +1,21 @@
-# Slackify-Markdown
+# Slackify-Markup
 
-![Build Status](https://github.com/jsarafajr/slackify-markdown/workflows/Build%20CI/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/jsarafajr/slackify-markdown/branch/master/graph/badge.svg)](https://codecov.io/gh/jsarafajr/slackify-markdown) [![Known Vulnerabilities](https://snyk.io/test/github/jsarafajr/slackify-markdown/badge.svg)](https://snyk.io/test/github/jsarafajr/slackify-markdown)
+![Build Status](https://github.com/everyoneselectronic/slackify-markup/workflows/Build%20CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/everyoneselectronic/slackify-markup/branch/master/graph/badge.svg)](https://codecov.io/gh/everyoneselectronic/slackify-markup) [![Known Vulnerabilities](https://snyk.io/test/github/everyoneselectronic/slackify-markup/badge.svg)](https://snyk.io/test/github/everyoneselectronic/slackify-markup)
 
 
-Slackify-Markdown is a Markdown to [Slack-specific-markdown](https://api.slack.com/docs/message-formatting#message_formatting) converter, based on [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/).
+Slackify-Markup is a Markdown to [Slack-specific-markup](https://slack.com/intl/en-gb/help/articles/202288908-Format-your-messages#markup) converter, based on [jsarafajr/slackify-markdown](https://github.com/jsarafajr/slackify-markdown) and [Unified](https://github.com/unifiedjs/unified) and [Remark](https://github.com/remarkjs/remark/).
 
 ## Install
 
 ```bash
-npm install slackify-markdown
+npm install slackify-markup
 ```
 
 ## Usage
 
 ```js
-const slackifyMarkdown = require('slackify-markdown');
+const slackifyMarkup = require('slackify-markup');
 const markdown = `
 # List of items
 
@@ -26,7 +26,7 @@ const markdown = `
 [here is an example](https://example.com)
 `;
 
-slackifyMarkdown(markdown);
+slackifyMarkup(markdown);
 /*
  *List of items*
 
@@ -34,17 +34,8 @@ slackifyMarkdown(markdown);
  • item 2
  • item 3
 
- <https://example.com|here is an example>
+ [here is an example](https://example.com)
 /*
 ```
-
-### NodeJS version < 10
-
-Use slackify-markdown v2 if you use nodejs version 9 and lower.
-
-```bash
-npm install slackify-markdown@2
-```
-
 
 [MIT Licence](LICENSE)
