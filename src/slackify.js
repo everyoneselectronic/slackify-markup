@@ -8,7 +8,7 @@ const zeroWidthSpace = String.fromCharCode(0x200B);
 
 /**
  * Creates custom `mdast-util-to-markdown` handlers that tailor the output for
- * Slack Markdown.
+ * Slack Markup.
  *
  * @param {Readonly<Record<string, { title: null | string, url: string }>>} definitions
  * Record of `Definition`s in the Markdown document, keyed by identifier.
@@ -79,7 +79,7 @@ const createHandlers = definitions => ({
 
     if (!isURL(url)) return text || url;
 
-    return text ? `<${url}|${text}>` : `<${url}>`;
+    return (text && text !== url) ? `[${text}](${url})` : `${url}`;
   },
 
   linkReference: (node, _parent, context) => {
@@ -91,7 +91,7 @@ const createHandlers = definitions => ({
 
     if (!definition || !isURL(definition.url)) return text;
 
-    return text ? `<${definition.url}|${text}>` : `<${definition.url}>`;
+    return (text && text !== definition.url) ? `[${text}](${definition.url})` : `${definition.url}`;
   },
 
   image: (node, _parent, context) => {
@@ -102,7 +102,7 @@ const createHandlers = definitions => ({
 
     if (!isURL(url)) return text || url;
 
-    return text ? `<${url}|${text}>` : `<${url}>`;
+    return (text && text !== url) ? `[${text}](${url})` : `${url}`;
   },
 
   imageReference: (node, _parent, context) => {
@@ -114,7 +114,7 @@ const createHandlers = definitions => ({
 
     if (!definition || !isURL(definition.url)) return text;
 
-    return text ? `<${definition.url}|${text}>` : `<${definition.url}>`;
+    return (text && text !== definition.url) ? `[${text}](${definition.url})` : `${definition.url}`;
   },
 
   text: (node, _parent, context) => {
@@ -135,7 +135,7 @@ const createHandlers = definitions => ({
 
 /**
  * Creates options to be passed into a `remark-stringify` processor that tailor
- * the output for Slack Markdown.
+ * the output for Slack Markup.
  *
  * @param {Readonly<Record<string, { title: null | string, url: string }>>} definitions
  * Record of `Definition`s in the Markdown document, keyed by identifier.
